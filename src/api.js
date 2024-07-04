@@ -16,4 +16,10 @@ app.use('/', router.get('/sobre', (req, res) => {
     })
 }))
 
+app.use("/", router.get('/salas', (req, res) => {
+    const salaController = require('./controllers/salaController');
+    const resp = salaController.get();
+    res.status(200).send(resp);
+}))
+
 module.exports = app;

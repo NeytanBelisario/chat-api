@@ -1,5 +1,5 @@
 require('dotenv').config();
-const app  = require("../src/api");
+const app  = require("../src/routers/api");
 
 const port = process.env.API_PORT || 5000;
 

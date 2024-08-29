@@ -5,7 +5,7 @@ let listarSalas = async () => {
 };
 
 let buscarSala = async (idsala) => {
-  return db.findOne("salas", idsala);
+  return await db.findOne("salas", idsala);
 }
 
 let atualizarMensagens = async (sala) => {

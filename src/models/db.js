@@ -25,10 +25,8 @@ async function insertOne(collection, objeto) {
 
 let findOne = async (collection, _id) => {
   const db = await connect();
-  let obj = await db.collection(collection).find({ '_id': new ObjectId(_id) }).toArray();
-  if (obj)
-    return obj[0];
-  return false;
+  let obj = await db.collection(collection).findOne({ '_id': new ObjectId(_id) });
+  return obj ? obj : false;
 }
 
 
@@ -38,5 +36,10 @@ let updateOne = async (collection, object, param) => {
   return result;
 }
 
+let deleteOne = async (collection, param) => {
+  const db = await connect();
+  console.log(param)
+  return await db.collection(collection).deleteOne({ '_id': new ObjectId(param) });
+};
 
-module.exports = { findAll, insertOne, findOne, updateOne }
+module.exports = {findAll, insertOne, findOne, updateOne, deleteOne}
